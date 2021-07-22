@@ -1,5 +1,16 @@
 class BirdsController < ApplicationController
 
+    # POST /birds
+    def create
+      #byebug
+      #get the data from the body of the requests by using params
+      #create a new Bird 
+      bird = Bird.create(name: params[:name], species: params[:species])
+ 
+      #send the newly created Bird as a response
+      render json: bird, status: :created
+    end
+
   # GET /birds
   def index
     birds = Bird.all
